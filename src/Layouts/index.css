@@ -1,0 +1,10 @@
+.login-form {
+    width: 350px;
+    height: 300px;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+  }

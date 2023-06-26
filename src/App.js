@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "bootstrap/dist/css/bootstrap.min.css"
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css'
+import { Routes, Route } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import Main from "./Layouts/Main.js";
+import { RoutesProps } from "./Routes/RouteProps.js";
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={'<h2>Loading</h2>'}>
+      <Routes>
+        {
+          RoutesProps.map(({ path, main }) => {
+            return <Route path={path} exact element={main} />
+          })
+        }
+      </Routes>
+    </Suspense>
   );
 }
 
